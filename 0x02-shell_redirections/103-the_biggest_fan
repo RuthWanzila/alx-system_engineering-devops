@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -f 1 web_server_logs.tsv | sort | uniq -c | sort -rn | head -n 11 | awk '{print $2 "\t" $1}'
+cut -f1 log_file.tsv | sort | uniq -c | sort -rn | head -n11 | awk '{print $2}'
