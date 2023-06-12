@@ -1,2 +1,2 @@
 #!/bin/bash
-perl -pe 's/^\s*(\w)\S*\s*/$$1/g' "$@"
+echo $(cut -c1 | tr -d "\n")
