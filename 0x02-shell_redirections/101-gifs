@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -type f -iname '*.gif' -printf '%P\n' | sed 's/\.gif$//' | sort -f
