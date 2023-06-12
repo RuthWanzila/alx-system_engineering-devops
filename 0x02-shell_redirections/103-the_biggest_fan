@@ -1,2 +1,2 @@
 #!/bin/bash
-awk '{host[$1]++} END {for (h in host) print h, host[h]}' access.log | sort -k2 -rn | head -n 11
+cut -f 1 web_server_logs.tsv | sort | uniq -c | sort -rn | head -n 11 | awk '{print $2 "\t" $1}'
