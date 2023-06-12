@@ -1,2 +1,2 @@
 #!/bin/bash
-sort -t $'\t' -k1,1 -n access.log | uniq -c | sort -rn | head -n 11
+cut -f1 | sort | uniq -c | sort -nr | head -n 11
