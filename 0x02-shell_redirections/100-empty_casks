@@ -1,2 +1,2 @@
-#!/bish/bash
+#!/bin/bash
 find . -empty | rev | cut -d '/' | rev
