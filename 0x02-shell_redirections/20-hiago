@@ -1,2 +1,2 @@
 #!/bin/bash
-tr -d 'cC' < inputfile
+echo "$1" | tr -d 'cC'
