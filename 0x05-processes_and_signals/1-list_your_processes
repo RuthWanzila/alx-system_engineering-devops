@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script displays a list of currently running processes.
+
+ps axf --forest --format "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
