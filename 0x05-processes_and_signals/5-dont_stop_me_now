@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script stops the 4-to_infinity_and_beyond process.
+
+# Start the 4-to_infinity_and_beyond script in the background
+./4-to_infinity_and_beyond &
+
+# Capture the process ID of the 4-to_infinity_and_beyond script
+pid=$!
+
+# Wait for user input to stop the process
+read -rp "Press Enter to stop the 4-to_infinity_and_beyond process."
+
+# Use the kill command to terminate the process
+kill "$pid"
