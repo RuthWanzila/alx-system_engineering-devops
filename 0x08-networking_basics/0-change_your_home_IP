@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Script to configure an Ubuntu server with specific requirements.
+
+# Update the hosts file
+sudo sed -i 's/localhost\n127.0.0.2$/localhost/g' /etc/hosts
+
+# Update DNS resolver configuration
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf >/dev/null
+
+# Restart networking service
+sudo systemctl restart networking.service
+
+# Restart Docker service
+sudo systemctl restart docker.service
