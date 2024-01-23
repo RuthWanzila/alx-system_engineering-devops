@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# This script installs and configures nginx on a new Ubuntu machine.
+
+set -euo pipefail
+
+# Update the package list
+apt-get update
+
+# Install nginx
+apt-get install -y nginx
+
+# Configure nginx
+echo "Hello World!" > /var/www/html/index.html
+
+# Restart nginx
+service nginx restart
+
+exit 0
