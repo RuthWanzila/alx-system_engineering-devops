@@ -1,40 +1,41 @@
 #!/usr/bin/python3
-"""
-Exports to-do list information for a given employee ID to JSON format.
-"""
+""" export data in the JSON format """
 import json
-import requests
-import sys
 
 
-if __name__ == "__main__":
-    # Get the employee ID from command-line argument
-    employee_id = sys.argv[1]
+def export_tasks_to_json(user_id, tasks):
+    data = {user_id: []}
+    for task in tasks:
+        task_data = {
+            'task': task['title'],
+            'completed': task['completed'],
+            'username': task['username']
+        }
+        data[user_id].append(task_data)
 
-    # API URL
-    url = "https://jsonplaceholder.typicode.com/"
+    filename = f'{user_id}.json'
+    with open(filename, 'w') as file:
+        json.dump(data, file)
 
-    # Fetch user information
-    user_response = requests.get(url + "users/{}".format(employee_id))
-    user = user_response.json()
-    username = user.get("username")
 
-    # Fetch TODO list for the employee
-    todos_resp = requests.get(url + "todos", params={"userId": employee_id})
-    todos = todos_resp.json()
+# Example usage
+user_id = 'USER123'
+tasks = [
+    {
+        'title': 'Task 1',
+        'completed': True,
+        'username': 'JohnDoe'
+    },
+    {
+        'title': 'Task 2',
+        'completed': False,
+        'username': 'JohnDoe'
+    },
+    {
+        'title': 'Task 3',
+        'completed': True,
+        'username': 'JohnDoe'
+    }
+]
 
-    # Export TODO list to JSON
-    with open("{}.json".format(employee_id), "w") as jsonfile:
-        json.dump(
-            {
-                employee_id: [
-                    {
-                        "task": task.get("title"),
-                        "completed": task.get("completed"),
-                        "username": username,
-                    }
-                    for task in todos
-                ]
-            },
-            jsonfile,
-        )
+export_tasks_to_json(user_id, tasks)
